@@ -48,4 +48,10 @@ public class UserRegistrationController {
 		System.out.println("Updated :" + user.getUsername());
 		return new CustomResponse("Successfully updated");
 	}
+	
+	@CrossOrigin(origins=URL_CROSS)
+	@GetMapping("/test")
+	public CustomResponse getTest() {
+		return new CustomResponse("Success");
+	}
 }
