@@ -18,7 +18,7 @@ import io.abhi.data.User;
 @RestController
 public class UserRegistrationController {
 
-	private static final String URL_CROSS = "http://localhost:3000";
+	private static final String URL_CROSS = "*";
 
 	@CrossOrigin(origins=URL_CROSS)
 	@GetMapping("/users")
@@ -30,22 +30,35 @@ public class UserRegistrationController {
 	@CrossOrigin(origins=URL_CROSS)
 	@PostMapping("/user")
 	public CustomResponse saveUserData(@RequestBody User newUser) {
-
+		System.out.println("---------------------------------");
 		System.out.println("New user name:" + newUser.getName());
+		System.out.println("New user username:" + newUser.getUsername());
+		System.out.println("New user password:" + newUser.getPassword());
+		System.out.println("New user email:" + newUser.getEmailId());
+		System.out.println("New user contact:" + newUser.getContactNumber());
+		System.out.println("---------------------------------");
 		return new CustomResponse("Successfully Registered");
 	}
 
 	@CrossOrigin(origins=URL_CROSS)
 	@DeleteMapping("/user/{username}")
 	public CustomResponse deleteUserData(@PathVariable String username) {
+		System.out.println("---------------------------------");
 		System.out.println("Deleted :" + username);
+		System.out.println("---------------------------------");
 		return new CustomResponse("Successfully deleted");
 	}
 
 	@CrossOrigin(origins=URL_CROSS)
 	@PutMapping("/user")
 	public CustomResponse updateUserData(@RequestBody User user) {
-		System.out.println("Updated :" + user.getUsername());
+		System.out.println("---------------------------------");
+		System.out.println("Updated user name:" + user.getName());
+		System.out.println("Updated user username:" + user.getUsername());
+		System.out.println("Updated user password:" + user.getPassword());
+		System.out.println("Updated user email:" + user.getEmailId());
+		System.out.println("Updated user contact:" + user.getContactNumber());
+		System.out.println("---------------------------------");
 		return new CustomResponse("Successfully updated");
 	}
 	
