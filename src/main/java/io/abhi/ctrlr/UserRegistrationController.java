@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.abhi.data.CustomResponse;
 import io.abhi.data.User;
+import io.abhi.data.utils.Utility;
 
 @RestController
 public class UserRegistrationController {
@@ -23,43 +24,45 @@ public class UserRegistrationController {
 	@CrossOrigin(origins=URL_CROSS)
 	@GetMapping("/users")
 	public List<User> getAllUsers() {
-		return Arrays.asList(new User("abhi", "userabhi", "userpss", "abhi@test.com", 2323454),
-				new User("ihba", "abhiuser", "pssuser", "test@abhi.com", 2323478));
+		return Utility.fetch();
 	}
 
 	@CrossOrigin(origins=URL_CROSS)
 	@PostMapping("/user")
 	public CustomResponse saveUserData(@RequestBody User newUser) {
-		System.out.println("---------------------------------");
-		System.out.println("New user name:" + newUser.getName());
-		System.out.println("New user username:" + newUser.getUsername());
-		System.out.println("New user password:" + newUser.getPassword());
-		System.out.println("New user email:" + newUser.getEmailId());
-		System.out.println("New user contact:" + newUser.getContactNumber());
-		System.out.println("---------------------------------");
-		return new CustomResponse("Successfully Registered");
+		String message = "";
+		if(Utility.isUserExist(newUser)){
+			message = "User name already exists";
+		}else{
+			Utility.saveOrUpdate(newUser);
+			message = "Successfully Registered";
+		}
+		return new CustomResponse(message);
 	}
 
 	@CrossOrigin(origins=URL_CROSS)
 	@DeleteMapping("/user/{username}")
 	public CustomResponse deleteUserData(@PathVariable String username) {
-		System.out.println("---------------------------------");
-		System.out.println("Deleted :" + username);
-		System.out.println("---------------------------------");
-		return new CustomResponse("Successfully deleted");
+		String message = "";
+		User user = new User();
+		user.setUsername(username);
+		if(Utility.isUserExist(user)){
+			Utility.delete(username);
+			message = "Successfully deleted";
+		}
+		return new CustomResponse(message);
+		
 	}
 
 	@CrossOrigin(origins=URL_CROSS)
 	@PutMapping("/user")
 	public CustomResponse updateUserData(@RequestBody User user) {
-		System.out.println("---------------------------------");
-		System.out.println("Updated user name:" + user.getName());
-		System.out.println("Updated user username:" + user.getUsername());
-		System.out.println("Updated user password:" + user.getPassword());
-		System.out.println("Updated user email:" + user.getEmailId());
-		System.out.println("Updated user contact:" + user.getContactNumber());
-		System.out.println("---------------------------------");
-		return new CustomResponse("Successfully updated");
+		String message = "";
+		if(Utility.isUserExist(user)){
+			Utility.saveOrUpdate(user);
+			message = "Successfully updated";
+		}
+		return new CustomResponse(message);
 	}
 	
 	@CrossOrigin(origins=URL_CROSS)

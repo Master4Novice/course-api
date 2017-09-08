@@ -1,7 +1,0 @@
-[
-	{"name":"Java","username":"javauser","password":"test","emailId":"abc@gmail.com","contactNumber":2323232323},
-	{"name":"Redux","username":"reduxuser","password":"test","emailId":"abc@gmail.com","contactNumber":2323232322},
-    {"name":"C","username":"cuser","password":"test","emailId":"abc@gmail.com","contactNumber":2323232321},
-    {"name":"React","username":"reactuser","password":"test","emailId":"abc@gmail.com","contactNumber":2323232320},
-    {"name":"Angular","username":"angularuser","password":"test","emailId":"abc@gmail.com","contactNumber":2323232324}
-]
