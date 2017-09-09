@@ -5,13 +5,13 @@ public class User {
 	private String username;
     private String password;
     private String emailId;
-    private int contactNumber;
+    private long contactNumber;
     
     public User(){
     	
     }
     
-    public User(String name, String username, String password, String emailId, int contactNumber) {
+    public User(String name, String username, String password, String emailId, long contactNumber) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -44,10 +44,10 @@ public class User {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getContactNumber() {
+	public long getContactNumber() {
 		return contactNumber;
 	}
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 }

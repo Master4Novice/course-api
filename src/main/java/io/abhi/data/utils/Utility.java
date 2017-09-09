@@ -57,17 +57,21 @@ public class Utility {
 		User user = null;
 		List<User> users = new ArrayList<User>();
 		File[] fList = directory.listFiles();
-		for (File file : fList){
-			try (Reader reader = new FileReader(URL+file.getName())) {
+		if(fList.length==0){
+			return null;
+		}else{
+			for (File file : fList){
+				try (Reader reader = new FileReader(URL+file.getName())) {
 
-				user = gson.fromJson(reader,User.class);
-				users.add(user);
+					user = gson.fromJson(reader,User.class);
+					users.add(user);
 
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			return users;
 		}
-		return users;
 	}
 	
 	/**This method delete the provided user.
