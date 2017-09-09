@@ -8,7 +8,7 @@ public class User {
     private long contactNumber;
     
     public User(){
-    	
+ 
     }
     
     public User(String name, String username, String password, String emailId, long contactNumber) {
