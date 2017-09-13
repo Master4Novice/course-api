@@ -48,6 +48,8 @@ public class UserRegistrationController {
 		if(Utility.isUserExist(user)){
 			Utility.delete(username);
 			message = "Successfully deleted";
+		}else{			
+			message = "User name does not exists";
 		}
 		return new CustomResponse(message);
 		
@@ -60,12 +62,14 @@ public class UserRegistrationController {
 		if(Utility.isUserExist(user)){
 			Utility.saveOrUpdate(user);
 			message = "Successfully updated";
+		}else{
+			message = "User name does not exists";
 		}
 		return new CustomResponse(message);
 	}
 	
 	@CrossOrigin(origins=URL_CROSS)
-	@GetMapping("/test")
+	@GetMapping("/userTest")
 	public CustomResponse getTest() {
 		return new CustomResponse("Success");
 	}
