@@ -16,7 +16,7 @@ public class Utility {
 
 	private static Gson gson;
 
-	private static final String URL = "./src/main/resources/data/";
+	private static final String URL = "./data/";
 	private static final String EX_JSON = ".json";
 
 	public static void saveOrUpdate(User user){
